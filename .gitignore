@@ -1,2 +1,4 @@
-workdir
 tmp
+**/*.nextflow*
+**/work
+**/sol
