@@ -137,3 +137,4 @@ The workflow to run longgwas could be thought in two somewhat simple steps:
     - Using the google-bactch executor
 
 
+We won't go through the data preparation step in Terra today as it is out of the scope of this workshop, but I have added an example notebook to quickly see an example. It is available on github so you can download and reuse. [CLICK ME](https://github.com/AMCalejandro/longgwas_workshop/blob/main/materials/LONG-GWAS-PIPELINE.ipynb)
