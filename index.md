@@ -57,10 +57,83 @@ git clone --single-branch --branch modularize  git@github.com:michael-ta/longitu
 <br></br>
 # Outline
 
-1. Introduction to Nextflow
-2. Introduction to longgwas
-3. Understanding longwas components
-4. Building your first nextflow process
-5. Running different longitudinal GWASs using longgwas
-6. Summary
+1. Introduction to Nextflow and longgwas
+2. Get familiar with longgwas components
+3. Building your first nextflow process
+4. Running different longitudinal GWASs using longgwas
+5. Summary
+<br></br>
+
+# 1. Introduction to Nextflow
+
+To get started, we are going to follow a brief presentation to understand what Nextflow is.  
+Then, we will introduce the longgwas tool.
+Finally, we will review all longgwas components and capabilities.  
+<br></br>
+
+# 2. Get familiar with longgwas components
+![](figures/longgwas_remote.png)
+<br></br>
+
+longgwas is hosted on github remote, and it is where all the development and 
+
+## 2.1 Modules, subworkflows and workflows
+
+longgwas is hosted on github.  
+It has three main components everyone should be familiar with:
+  - **Modules**: These are the the different processes that all together make a subworkflow
+  - **Subworkflow**: They are the combination of different processes from a module or several modules. Based on user inputs, the subworkflow will select which of the available modules to includes.  
+  - **Workflow**: A workflow encloses the invocation of one or more processes and operators, that in our case are 
+<br></br>
+
+As an example, we could ask ourselves the question of how the GWAS analysis is run within the longgwas workflow after all the QC has been performed.  
+
+**Which are the modules?**
+We could look at the content in the [gwasrun module](https://github.com/michael-ta/longitudinal-GWAS-pipeline/blob/modularize/modules/gwasrun/cph.nf). There are three processess definitions, one per nextflow file.  
+
+**Which workflow are the modules included?**
+These three modules are included in the [rungwas subworkflow](https://github.com/michael-ta/longitudinal-GWAS-pipeline/blob/modularize/subworkflows/rungwas.nf). Based on user inputs, this subworkflow will allow us to run either of the three main models currently available through longgwas (GLM, CPH, GALLOP-LMM)
+
+**Do we see the GWAS subworkflow in the worjflow?**
+Finally, the subworkflow is included in the [main workflow](https://github.com/michael-ta/longitudinal-GWAS-pipeline/blob/modularize/workflows/main.nf) as one step.  
+
+## 2.2 config and yml file
+
+In addition, there are other key components that allow the workflow to run:
+  - **.config** file: We use the config file to set up general specifications for each of the executors we have available to run longgwas
+  - **.yml** file: We use this file to modify the longgwas arguments so that we can run longgwas based on our needs.
+
+
+## 2.3 Dockerfile and docker image hosted the Hub
+
+There is a Dockerfile that contains all software, dependencies and versions longgwas uses to run the main workflow.  
+However, it is no longer needed to build the docker image yourself. We are currently hosting the longgwas docker container on the Hub, which means that as long as you have docker installed, when you run longgwas, the tool will automatically pull the image from the Hub
+
+
+
+## 2.4 Documentation pages
+
+longgwas has a very [good online documentation resource](https://longitudinal-gwas-pipeline.readthedocs.io/en/latest/parameters.html#ancestry)
+It has information on how to run longgwas as a thorough description for all the parameters the tool supports
+
+
+
+# 3. Building your first nextflow process
+
+
+
+# 4. Running different longitudinal GWASs using longgwas
+
+
+## 4.1 Workflow summary
+
+![](figures/workflow.png)
+
+The workflow to run longgwas could be thought in two somewhat simple steps:
+  - Terra step. We need to filter the genetic data for the cohorts we want to include. In addition, we also need to process the clinical data so that we generate a covariates file, get our model outcomes, as well as do a bit of data QC if needed.
+
+  - longgwas step. longgwas can be run in two different ways:
+    - Using a local executor 
+    - Using the google-bactch executor
+
 
