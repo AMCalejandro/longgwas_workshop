@@ -43,7 +43,6 @@ In order to enable Nextflow to manage memory resources within Docker containers,
 
 ```
 GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"
-
 ```
 
 8. Clone longgwas tool in your working directory
@@ -55,27 +54,37 @@ git clone --single-branch --branch modularize  git@github.com:michael-ta/longitu
 
 
 <br></br>
+
 # Outline
 
 1. Introduction to Nextflow and longgwas
 2. Get familiar with longgwas components
-3. Building your first nextflow process
+3. longgwas workflow summary
+4. Building your first nextflow process
 4. Running different longitudinal GWASs using longgwas
 5. Summary
 <br></br>
+
+
+
 
 # 1. Introduction to Nextflow
 
 To get started, we are going to follow a brief presentation to understand what Nextflow is.  
 Then, we will introduce the longgwas tool.
 Finally, we will review all longgwas components and capabilities.  
+
+
+
 <br></br>
 
 # 2. Get familiar with longgwas components
 ![](figures/longgwas_remote.png)
+
 <br></br>
 
 longgwas is hosted on github remote, and it is where all the development and 
+
 
 ## 2.1 Modules, subworkflows and workflows
 
@@ -84,7 +93,6 @@ It has three main components everyone should be familiar with:
   - **Modules**: These are the the different processes that all together make a subworkflow
   - **Subworkflow**: They are the combination of different processes from a module or several modules. Based on user inputs, the subworkflow will select which of the available modules to includes.  
   - **Workflow**: A workflow encloses the invocation of one or more processes and operators, that in our case are 
-<br></br>
 
 As an example, we could ask ourselves the question of how the GWAS analysis is run within the longgwas workflow after all the QC has been performed.  
 
@@ -96,6 +104,7 @@ These three modules are included in the [rungwas subworkflow](https://github.com
 
 **Do we see the GWAS subworkflow in the worjflow?**
 Finally, the subworkflow is included in the [main workflow](https://github.com/michael-ta/longitudinal-GWAS-pipeline/blob/modularize/workflows/main.nf) as one step.  
+
 
 ## 2.2 config and yml file
 
@@ -110,7 +119,6 @@ There is a Dockerfile that contains all software, dependencies and versions long
 However, it is no longer needed to build the docker image yourself. We are currently hosting the longgwas docker container on the Hub, which means that as long as you have docker installed, when you run longgwas, the tool will automatically pull the image from the Hub
 
 
-
 ## 2.4 Documentation pages
 
 longgwas has a very [good online documentation resource](https://longitudinal-gwas-pipeline.readthedocs.io/en/latest/parameters.html#ancestry)
@@ -118,14 +126,9 @@ It has information on how to run longgwas as a thorough description for all the 
 
 
 
-# 3. Building your first nextflow process
+<br></br>
 
-
-
-# 4. Running different longitudinal GWASs using longgwas
-
-
-## 4.1 Workflow summary
+# 3 Workflow summary
 
 ![](figures/workflow.png)
 
@@ -138,3 +141,69 @@ The workflow to run longgwas could be thought in two somewhat simple steps:
 
 
 We won't go through the data preparation step in Terra today as it is out of the scope of this workshop, but I have added an example notebook to quickly see an example. It is available on github so you can download and reuse. [CLICK ME](https://github.com/AMCalejandro/longgwas_workshop/blob/main/materials/LONG-GWAS-PIPELINE.ipynb)
+
+
+
+<br></br>
+
+# 4. Building your first nextflow process
+
+We are going to go through three examples running nextflow workflows and getting hands on interacting with some nextflow components
+Please, clone the github repository if you have not done so yet.
+
+```
+git clone git@github.com:AMCalejandro/longgwas_workshop.git
+```
+
+
+## 4.1 Example 1
+
+A very easy example to get familiar with process and workflow nextflow keywords.  
+This is convenient to familiarise yourself with dataflow. Where does my data go after the process run on the workflow?
+
+## 4.2 Example 2
+
+This is an example to introduce attendees with channels nextflow structures, and how they are uused coupled with processes.  
+We will then try to add an extra process that makes use of the data coming out of the first process
+
+## 4.3 Example 3
+
+A very complete example provided by the Nextflow training team which is great as you can easily understand all the components part of the nextflow script.  
+
+
+
+<br></br>
+
+# 5. Running longitudinal GWASs
+
+Before getting started, please clone the modularize branch of longwas github remote if you have not done so yet.  
+
+```
+git clone --single-branch --branch modularize  git@github.com:michael-ta/longitudinal-GWAS-pipeline.git
+```
+Now that we have seen some basic examples running nextflow, we are going to try to run our very first job with longgwas.
+To do so, we are going to through the following steps together.  
+  - Define arguments and data paths on the yml file
+  - Choose one of the executors available on the config file
+  - Run longgwas with one simple comand 
+
+
+
+# 5.1 Run longgwas analysis 
+
+Once we have applied all the changes on the yml file, we can run with a local executor.
+We are going to apply several changes so that:
+- We modify the filtering parameters based on our needs
+- We specify to run either GLM, CPH, or GALLOP-LMM
+- We define well the input data to the tool
+
+Tu run the analysis we will repeteadly use tt
+
+```
+nxtflow run workflows/main.nf \
+  -params-file params.yml \
+  --profile standard
+```
+
+
+
