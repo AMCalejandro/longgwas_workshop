@@ -140,7 +140,8 @@ The workflow to run longgwas could be thought in two somewhat simple steps:
     - Using the google-bactch executor
 
 
-We won't go through the data preparation step in Terra today as it is out of the scope of this workshop, but I have added an example notebook to quickly see an example. It is available on github so you can download and reuse. [CLICK ME](https://github.com/AMCalejandro/longgwas_workshop/blob/main/materials/LONG-GWAS-PIPELINE.ipynb)
+We won't go through the data preparation step in Terra today as it is out of the scope of this workshop, but I have added an example notebook to quickly see an example. It is available on github so you can download and reuse.  
+[CLICK ME](https://github.com/AMCalejandro/longgwas_workshop/blob/main/materials/LONG-GWAS-PIPELINE.ipynb)
 
 
 
@@ -189,7 +190,7 @@ To do so, we are going to through the following steps together.
 
 
 
-# 5.1 Run longgwas analysis 
+## 5.1 Run longgwas analysis 
 
 Once we have applied all the changes on the yml file, we can run with a local executor.
 We are going to apply several changes so that:
@@ -205,7 +206,7 @@ nxtflow run workflows/main.nf \
   --profile standard
 ```
 
-# 5.2 Demo longitudinal GWASs with cloud batch
+## 5.2 Demo longitudinal GWASs with cloud batch
 
 Now I am going to give a quick demonstration on how we can connect to google and run our analyses using Nextflow google cloud batch executor.  
 
