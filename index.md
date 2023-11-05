@@ -63,7 +63,7 @@ git clone --single-branch --branch modularize  git@github.com:michael-ta/longitu
 4. Building your first nextflow process
 4. Running different longitudinal GWASs using longgwas
 5. Summary
-<br></br>
+<br />
 
 
 
@@ -76,12 +76,12 @@ Finally, we will review all longgwas components and capabilities.
 
 
 
-<br></br>
+<br />
 
 # 2. Get familiar with longgwas components
 ![](figures/longgwas_remote.png)
 
-<br></br>
+<br />
 
 longgwas is hosted on github remote, and it is where all the development and 
 
@@ -126,7 +126,7 @@ It has information on how to run longgwas as a thorough description for all the 
 
 
 
-<br></br>
+<br />
 
 # 3 Workflow summary
 
@@ -144,7 +144,7 @@ We won't go through the data preparation step in Terra today as it is out of the
 
 
 
-<br></br>
+<br />
 
 # 4. Building your first nextflow process
 
@@ -172,7 +172,7 @@ A very complete example provided by the Nextflow training team which is great as
 
 
 
-<br></br>
+<br />
 
 # 5. Running longitudinal GWASs
 
