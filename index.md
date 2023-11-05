@@ -197,7 +197,7 @@ We are going to apply several changes so that:
 - We specify to run either GLM, CPH, or GALLOP-LMM
 - We define well the input data to the tool
 
-Tu run the analysis we will repeteadly use tt
+Tu run the analysis we will repeteadly use the follow comand
 
 ```
 nxtflow run workflows/main.nf \
