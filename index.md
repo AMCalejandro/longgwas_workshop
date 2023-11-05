@@ -92,7 +92,7 @@ longgwas is hosted on github.
 It has three main components everyone should be familiar with:
   - **Modules**: These are the the different processes that all together make a subworkflow
   - **Subworkflow**: They are the combination of different processes from a module or several modules. Based on user inputs, the subworkflow will select which of the available modules to includes.  
-  - **Workflow**: A workflow encloses the invocation of one or more processes and operators, that in our case are 
+  - **Workflow**: A workflow encloses the invocation of one or more processes and operators, that in our case are multiple processes and operators wrapped up in subworkflows
 
 As an example, we could ask ourselves the question of how the GWAS analysis is run within the longgwas workflow after all the QC has been performed.  
 
@@ -113,7 +113,7 @@ In addition, there are other key components that allow the workflow to run:
   - **.yml** file: We use this file to modify the longgwas arguments so that we can run longgwas based on our needs.
 
 
-## 2.3 Dockerfile and docker image hosted the Hub
+## 2.3 Dockerfile and docker image hosted in the Hub
 
 There is a Dockerfile that contains all software, dependencies and versions longgwas uses to run the main workflow.  
 However, it is no longer needed to build the docker image yourself. We are currently hosting the longgwas docker container on the Hub, which means that as long as you have docker installed, when you run longgwas, the tool will automatically pull the image from the Hub
@@ -156,17 +156,17 @@ git clone git@github.com:AMCalejandro/longgwas_workshop.git
 ```
 
 
-## 4.1 Example 1
+## Example 1
 
 A very easy example to get familiar with process and workflow nextflow keywords.  
 This is convenient to familiarise yourself with dataflow. Where does my data go after the process run on the workflow?
 
-## 4.2 Example 2
+## Example 2
 
 This is an example to introduce attendees with channels nextflow structures, and how they are uused coupled with processes.  
 We will then try to add an extra process that makes use of the data coming out of the first process
 
-## 4.3 Example 3
+## Example 3
 
 A very complete example provided by the Nextflow training team which is great as you can easily understand all the components part of the nextflow script.  
 
