@@ -61,8 +61,8 @@ git clone --single-branch --branch modularize  git@github.com:michael-ta/longitu
 2. Get familiar with longgwas components
 3. longgwas workflow summary
 4. Building your first nextflow process
-4. Running different longitudinal GWASs using longgwas
-5. Summary
+5. Running longitudinal GWASs
+6. Summary
 <br />
 
 
@@ -205,5 +205,16 @@ nxtflow run workflows/main.nf \
   --profile standard
 ```
 
+# 5.2 Demo longitudinal GWASs with cloud batch
+
+Now I am going to give a quick demonstration on how we can connect to google and run our analyses using Nextflow google cloud batch executor.  
 
 
+# 6. Summary.  
+
+- Nextflow is cool.  
+- longgwas allows us to run different type of longitudinal analyses from one simple command.  
+- There are two steps that need to be performed to run longgwas:
+  - Prepare the data in Terra.
+  - Run longgwas job in the background using google or HPC resources.  
+- Thanks to the abstraction provided by Nextflow executors, we can run our portable pipeline in other systems such as Google Cloud Platform
